@@ -11,10 +11,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
-import FirstPageIcon from '@mui/icons-material/FirstPage';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import LastPageIcon from '@mui/icons-material/LastPage';
+import {MdFirstPage, MdLastPage, MdKeyboardArrowLeft, MdKeyboardArrowRight} from 'react-icons/md'
 
 interface TablePaginationActionsProps {
     count: number;
@@ -55,28 +52,28 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
                 disabled={page === 0}
                 aria-label="first page"
             >
-                {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+                {theme.direction === 'rtl' ? <MdLastPage /> : <MdFirstPage />}
             </IconButton>
             <IconButton
                 onClick={handleBackButtonClick}
                 disabled={page === 0}
                 aria-label="previous page"
             >
-                {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                {theme.direction === 'rtl' ? <MdKeyboardArrowRight /> : <MdKeyboardArrowLeft />}
             </IconButton>
             <IconButton
                 onClick={handleNextButtonClick}
                 disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label="next page"
             >
-                {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                {theme.direction === 'rtl' ? <MdKeyboardArrowLeft /> : <MdKeyboardArrowRight />}
             </IconButton>
             <IconButton
                 onClick={handleLastPageButtonClick}
                 disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label="last page"
             >
-                {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+                {theme.direction === 'rtl' ? <MdFirstPage /> : <MdLastPage />}
             </IconButton>
         </Box>
     );

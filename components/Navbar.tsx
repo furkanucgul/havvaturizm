@@ -5,13 +5,13 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import {MdMenu, MdAccountCircle} from 'react-icons/md'
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import MenuDrawer from './MenuDrawer';
 
 export default function Navbar() {
   const [auth, setAuth] = React.useState(true);
@@ -31,6 +31,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <MenuDrawer/>
       <FormGroup>
         <FormControlLabel
           control={
@@ -52,7 +53,7 @@ export default function Navbar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <MdMenu />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Photos
@@ -67,7 +68,7 @@ export default function Navbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <MdAccountCircle />
               </IconButton>
               <Menu
                 id="menu-appbar"
