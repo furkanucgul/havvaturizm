@@ -1,5 +1,5 @@
 'use client'
-import { CartesianGrid, XAxis, YAxis, Tooltip, Bar, BarChart, Legend } from 'recharts';
+import { CartesianGrid, XAxis, YAxis, Tooltip, Bar, BarChart, Legend, ResponsiveContainer } from 'recharts';
 
 
 
@@ -21,26 +21,25 @@ export function CustomerCount() {
 
 
   return (
-    <div>
+      <ResponsiveContainer width='100%' height='100%'>
       <BarChart
-        width={800}
+        width={300}
         height={200}
         data={data}
         margin={{
           top: 5,
-          right: 30,
-          left: 20,
+          right: 5,
+          left: 5,
           bottom: 5
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
-        <YAxis />
         <Tooltip />
         <Legend />
         <Bar dataKey="uv" fill="#5e86cc" />
       </BarChart>
-    </div>
+      </ResponsiveContainer>
   );
 }
 
