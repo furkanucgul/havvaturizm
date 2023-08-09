@@ -16,6 +16,8 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { TableHead } from '@mui/material';
+import ContactPageOutlinedIcon from '@mui/icons-material/ContactPageOutlined';
+import CustomerAddDialog from './CustomerAddDialog';
 
 interface TablePaginationActionsProps {
     count: number;
@@ -90,19 +92,7 @@ function createData(name: string, calories: number, fat: number) {
 }
 
 const rows = [
-    createData('Cupcake', 305, 3.7),
-    createData('Donut', 452, 25.0),
-    createData('Eclair', 262, 16.0),
-    createData('Frozen yoghurt', 159, 6.0),
-    createData('Gingerbread', 356, 16.0),
-    createData('Honeycomb', 408, 3.2),
-    createData('Ice cream sandwich', 237, 9.0),
-    createData('Jelly Bean', 375, 0.0),
-    createData('KitKat', 518, 26.0),
-    createData('Lollipop', 392, 0.2),
-    createData('Marshmallow', 318, 0),
-    createData('Nougat', 360, 19.0),
-    createData('Oreo', 437, 18.0),
+    { name: 'Furkan', calories: 5535005315, fat: 53 }
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 export default function CustomPaginationActionsTable() {
@@ -126,15 +116,21 @@ export default function CustomPaginationActionsTable() {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
+    const [open, setOpen] = React.useState(false);
 
     return (
         <TableContainer component={Paper}>
+            <div className="w-full text-end">
+                <button className="mt-3 mr-3 rounded-full bg-[#5e86cc] hover:bg-[#7395cf] px-2 py-1">Musteri ekle
+                </button>
+                {/* <CustomerAddDialog open={open} setOpen={setOpen} /> BURADAYIM MUSTERI EKLEME DIALOGTAYIZ... */}
+            </div>
             <Table size='small' aria-label="custom pagination table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
+                        <TableCell><b>Musterinin Adi</b></TableCell>
+                        <TableCell align='center'><b>Numarasi</b></TableCell>
+                        <TableCell align='center'><b>Bilgiler</b></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -146,11 +142,13 @@ export default function CustomPaginationActionsTable() {
                             <TableCell component="th" scope="row">
                                 {row.name}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }} align='center'>
                                 {row.calories}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
-                                {row.fat}
+                            <TableCell style={{ width: 160 }} align='center'>
+                                <button>
+                                    <ContactPageOutlinedIcon />
+                                </button>
                             </TableCell>
                         </TableRow>
                     ))}
@@ -185,5 +183,6 @@ export default function CustomPaginationActionsTable() {
                 </TableFooter>
             </Table>
         </TableContainer>
+
     );
 }
